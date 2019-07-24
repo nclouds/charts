@@ -34,6 +34,9 @@ master:
   securityRealm: |-
     <securityRealm class="hudson.security.LegacySecurityRealm"/>
   # Allows to configure different AuthorizationStrategy using Jenkins XML
+  updateCenters:
+    - id: default
+      url: https://updates.jenkins.io/update-center.json
   authorizationStrategy: |-
      <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
        <denyAnonymousReadAccess>true</denyAnonymousReadAccess>

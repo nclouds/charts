@@ -12,6 +12,18 @@ metadata:
     "app.kubernetes.io/instance": "{{ .Release.Name }}"
     "app.kubernetes.io/component": "{{ .Values.master.componentName }}"
 data:
+{{- if .Values.master.updateCenters }}
+  {{- range .Values.master.updateCenters }}
+  hudson.model.UpdateCenter.xml: | -
+    <?xml version='1.1' encoding='UTF-8'?>
+    <sites>
+      <site>
+        <id>{{ .id }}</id>
+        <url>{{ .url }}</url>
+      </site>
+    </sites>
+  {{- end }}
+{{- end }}
   config.xml: |-
     <?xml version='1.0' encoding='UTF-8'?>
     <hudson>
